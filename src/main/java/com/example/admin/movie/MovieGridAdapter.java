@@ -32,7 +32,7 @@ public class MovieGridAdapter extends BaseAdapter {
     public Context mContext;
     public ArrayList<MovieDetails> mMovieList;
     public static String baseURL = "https://api.themoviedb.org/3/movie/";
-    public static String apiKey = "?api_key=ae13bc55fa2bfb06c6dfc5ab972073b9";
+    public static String apiKey = "?api_key=####";
     public static String ratingURL = "top_rated";
     public static String popularURL = "popular";
     public static String imageBaseURL = "http://image.tmdb.org/t/p/";
