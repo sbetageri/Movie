@@ -1,6 +1,7 @@
 package com.example.admin.movie;
 
 import android.content.Context;
+import android.graphics.Movie;
 import android.os.AsyncTask;
 import android.util.Log;
 import android.view.View;
@@ -33,7 +34,9 @@ public class MovieGridAdapter extends BaseAdapter {
     public static String baseURL = "https://api.themoviedb.org/3/discover/movie?api_key=";
     public static String apiKey = "ae13bc55fa2bfb06c6dfc5ab972073b9";
     public static String ratingURL = "&sort_by=vote_average.desc&vote_count.gte=1500";
-    public static String imageBaseURL = "http://image.tmdb.org/t/p/w300";
+    public static String imageBaseURL = "http://image.tmdb.org/t/p/";
+    public static String posterResolution = "w300/";
+    public static String backdropResolution = "w780/";
     public static String MOVIE_GRID_ADAPTER = "MOVIE_GRID_ADAPTER";
 
     MovieGridAdapter(Context context) {
@@ -79,9 +82,8 @@ public class MovieGridAdapter extends BaseAdapter {
         } else {
             poster = (ImageView)convertView;
         }
-        String imageURL = imageBaseURL + movie.getPosterPath();
+        String imageURL = imageBaseURL + posterResolution + movie.getPosterPath();
         Picasso.with(mContext).load(imageURL).into(poster);
-        poster.setAdjustViewBounds(true);
         return poster;
     }
 
@@ -95,7 +97,7 @@ public class MovieGridAdapter extends BaseAdapter {
                 InputStream is = conn.getInputStream();
                 BufferedReader br = new BufferedReader(new InputStreamReader(is));
                 JSONObject obj = new JSONObject(br.readLine());
-                Log.e(MOVIE_GRID_ADAPTER, obj.toString());
+                //Log.e(MOVIE_GRID_ADAPTER, obj.toString());
                 JSONArray arr = obj.getJSONArray("results");
                 int len = arr.length();
                 int listLen = mMovieList.size();
@@ -118,7 +120,6 @@ public class MovieGridAdapter extends BaseAdapter {
         protected void onPostExecute(Void aVoid) {
             super.onPostExecute(aVoid);
             notifyDataSetChanged();
-            Toast.makeText(mContext, new Integer(mMovieList.size()).toString(), Toast.LENGTH_LONG).show();
         }
     }
 }
