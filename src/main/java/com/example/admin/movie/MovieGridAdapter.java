@@ -39,15 +39,19 @@ public class MovieGridAdapter extends BaseAdapter {
     public static String posterResolution = "w185/";
     public static String MOVIE_GRID_ADAPTER = "MOVIE_GRID_ADAPTER";
 
-    MovieGridAdapter(Context context) {
+    MovieGridAdapter(Context context, String sortOrder) {
         Log.e(MOVIE_GRID_ADAPTER, "CONSTRUCTING");
         mContext = context;
         mMovieList = MovieList.getInstance();
-        updateMovieDetails(popularURL);
+        if(sortOrder.equals("rating")) {
+            updateMovieDetails(ratingURL);
+        } else {
+            updateMovieDetails(popularURL);
+        }
     }
 
-    public void updateMovieDetails(String sortOrder) {
-        new MovieDownloader().execute(baseURL + sortOrder +  apiKey);
+    public void updateMovieDetails(String sortKey) {
+        new MovieDownloader().execute(baseURL + sortKey +  apiKey);
     }
 
     @Override

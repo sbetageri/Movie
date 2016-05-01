@@ -59,9 +59,10 @@ public class MainActivity extends AppCompatActivity implements SharedPreferences
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         GridView posters = (GridView)findViewById(R.id.poster_grid);
-        mMovieGridAdapter = new MovieGridAdapter(this);
-        posters.setAdapter(mMovieGridAdapter);
         pref = PreferenceManager.getDefaultSharedPreferences(this);
+        String sortKey = pref.getString(getString(R.string.sort_pref), "popularity");
+        mMovieGridAdapter = new MovieGridAdapter(this, sortKey);
+        posters.setAdapter(mMovieGridAdapter);
         pref.registerOnSharedPreferenceChangeListener(this);
         posters.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
