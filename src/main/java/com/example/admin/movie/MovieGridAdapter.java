@@ -31,12 +31,12 @@ import java.util.ArrayList;
 public class MovieGridAdapter extends BaseAdapter {
     public Context mContext;
     public ArrayList<MovieDetails> mMovieList;
-    public static String baseURL = "https://api.themoviedb.org/3/discover/movie?api_key=";
-    public static String apiKey = "ae13bc55fa2bfb06c6dfc5ab972073b9";
-    public static String ratingURL = "&sort_by=vote_average.desc&vote_count.gte=1500";
+    public static String baseURL = "https://api.themoviedb.org/3/movie/";
+    public static String apiKey = "?api_key=ae13bc55fa2bfb06c6dfc5ab972073b9";
+    public static String ratingURL = "top_rated";
+    public static String popularURL = "popular";
     public static String imageBaseURL = "http://image.tmdb.org/t/p/";
-    public static String posterResolution = "w300/";
-    public static String backdropResolution = "w780/";
+    public static String posterResolution = "w185/";
     public static String MOVIE_GRID_ADAPTER = "MOVIE_GRID_ADAPTER";
 
     MovieGridAdapter(Context context) {
@@ -51,7 +51,7 @@ public class MovieGridAdapter extends BaseAdapter {
         TODO
         obtain shared preferences for sort order and call the update method with the corresponding url
          */
-        new MovieDownloader().execute(baseURL + apiKey);
+        new MovieDownloader().execute(baseURL + popularURL +  apiKey);
     }
 
     @Override
