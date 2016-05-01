@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+
+        <ImageView
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:id="@+id/details_poster"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+
+            <TextView
+                android:id="@+id/details_title"
+                android:layout_toRightOf="@+id/details_poster"
+                android:paddingLeft="4sp"
+                android:layout_alignParentTop="true"
+                android:textStyle="bold"
+                android:textSize="28sp"
+                android:background="@color/colorPrimary"
+                android:textColor="@color/PrimaryText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:text="Sai Ram"/>
+
+            <TextView
+                android:layout_below="@+id/details_title"
+                android:paddingLeft="4sp"
+                android:layout_toRightOf="@+id/details_poster"
+                android:layout_alignBottom="@+id/details_poster"
+                android:background="@color/colorPrimary"
+                android:textColor="@color/PrimaryText"
+                android:textSize="24sp"
+                android:id="@+id/details_release_date"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:text="Aum Sai Ram"/>
+
+        <TextView
+            android:layout_below="@+id/details_poster"
+            android:background="@color/colorPrimaryDark"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentRight="true"
+            android:textColor="@color/PrimaryText"
+            android:textSize="22sp"
+            android:paddingLeft="8sp"
+            android:paddingTop="8sp"
+            android:paddingBottom="8sp"
+            android:id="@+id/details_rating"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <ScrollView
+            android:layout_below="@id/details_rating"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentRight="true"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/details_overview"
+                android:paddingLeft="4sp"
+                android:textSize="20sp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+        </ScrollView>
+</RelativeLayout>

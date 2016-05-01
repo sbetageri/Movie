@@ -43,15 +43,11 @@ public class MovieGridAdapter extends BaseAdapter {
         Log.e(MOVIE_GRID_ADAPTER, "CONSTRUCTING");
         mContext = context;
         mMovieList = MovieList.getInstance();
-        updateMovieDetails();
+        updateMovieDetails(popularURL);
     }
 
-    public void updateMovieDetails() {
-        /*
-        TODO
-        obtain shared preferences for sort order and call the update method with the corresponding url
-         */
-        new MovieDownloader().execute(baseURL + popularURL +  apiKey);
+    public void updateMovieDetails(String sortOrder) {
+        new MovieDownloader().execute(baseURL + sortOrder +  apiKey);
     }
 
     @Override
@@ -104,6 +100,7 @@ public class MovieGridAdapter extends BaseAdapter {
                 Log.e(MOVIE_GRID_ADAPTER, new Integer(len).toString());
                 for(int i = 0; i < len; i++) {
                     MovieDetails movie = new MovieDetails(arr.getJSONObject(i));
+                    Log.e(MOVIE_GRID_ADAPTER, "parsed JSON to movie");
                     if(listLen <= i) {
                         mMovieList.add(movie);
                     } else {

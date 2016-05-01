@@ -3,7 +3,7 @@
     <string name="settings">Settings</string>
     <string name="sort_by">Sorting Order</string>
     <string name="sort_pref">Sorting Preference</string>
-    <string name="sort_summary">Popular or Rating</string>
+    <string name="sort_summary">Popular ? Rating</string>
     <string name="title_activity_settings">Settings</string>
 
     <!-- Strings related to Settings -->

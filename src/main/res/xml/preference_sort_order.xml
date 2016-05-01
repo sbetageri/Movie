@@ -5,11 +5,10 @@
         android:title="@string/sort_by">
         <ListPreference
             android:key="@string/sort_pref"
-            android:summary="@string/app_name"
-            android:defaultValue="popularity"
+            android:summary="@string/sort_summary"
+            android:defaultValue="Popularity"
             android:entries="@array/Sort_order_entries"
             android:entryValues="@array/Sort_order_entry_values"/>
-
     </PreferenceCategory>
 
 </PreferenceScreen>

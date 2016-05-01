@@ -17,7 +17,7 @@ import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.ImageView;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements SharedPreferences.OnSharedPreferenceChangeListener{
     private MovieGridAdapter mMovieGridAdapter;
     public static String POSTER_POSITION = "POSTER_POSITION";
     public static String POSTER_IMAGE = "POSTER_IMAGE";
@@ -41,6 +41,20 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
+    public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
+        if(mMovieGridAdapter != null) {
+            String sortOrder = sharedPreferences.getString(getString(R.string.sort_pref), "popularity");
+            String sortKey;
+            if(sortOrder.equals("popularity")) {
+                sortKey = MovieGridAdapter.popularURL;
+            } else {
+                sortKey = MovieGridAdapter.ratingURL;
+            }
+            mMovieGridAdapter.updateMovieDetails(sortKey);
+        }
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
@@ -48,6 +62,7 @@ public class MainActivity extends AppCompatActivity {
         mMovieGridAdapter = new MovieGridAdapter(this);
         posters.setAdapter(mMovieGridAdapter);
         pref = PreferenceManager.getDefaultSharedPreferences(this);
+        pref.registerOnSharedPreferenceChangeListener(this);
         posters.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
